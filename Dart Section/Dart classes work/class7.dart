@@ -87,7 +87,7 @@ class Person {
 
 //  ====== inheritance class =========
 
-// Note --> parent wala sir data hm child class ke object se access kr skty hai liken parent se child ka access nhi kr skty  jesko child bnana ho ga osko extend krdy gy parent se                                                                                                                        or eske ilawa multilevel inheritance hai jo parent to child phr ye child third child ka parent ban jata hai
+// Note --> parent wala sir data hm child class ke object se access kr skty hai liken parent se child ka access nhi kr skty  jesko child bnana ho ga osko extend krdy gy parent se or eske ilawa multilevel inheritance hai jo parent to child phr ye child third child ka parent ban jata hai
 
 class Mobile {
   String? mobile_name;
