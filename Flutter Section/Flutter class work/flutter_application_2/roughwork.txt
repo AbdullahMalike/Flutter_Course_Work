@@ -1,0 +1,2 @@
+minAxisAlignment --> tb use hota hai jb scroll wala widget na lga ho or esme space between wagera use kr skty hai or top to bottom
+crossAixAlignment --> container ke ander container hota os pr kam krta hai jesy ke start or end
