@@ -34,7 +34,7 @@ class TabBarExample extends StatelessWidget {
                 child: Text("Chats"),
               ),
               Tab(
-                icon: Icon(Icons.beach_access_sharp),
+                child: Text("Status"),
               ),
               Tab(
                 icon: Icon(Icons.brightness_5_sharp),
@@ -84,8 +84,19 @@ class TabBarExample extends StatelessWidget {
                 ),
               ),
             ),
-            Center(
-              child: Text("It's rainy here"),
+            Column(
+              children: [
+                Container(
+                  padding: EdgeInsets.only(left: 16.0),
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "Recent",
+                    style: TextStyle(fontSize: 18),
+                  ),
+                ),
+                getstatusui(
+                    "assets/boy.avif", Colors.grey, "", "Rafay", "1 min ago")
+              ],
             ),
             Center(
               child: Text("It's sunny here"),
@@ -117,5 +128,27 @@ getchatui(String url, Color cColor, String avatar, String title,
     title: Text("$title"),
     subtitle: Text("$subTitle"),
     trailing: Text("$trailing"),
+  );
+}
+
+getstatusui(
+    String url, Color cColor, String avatar, String title, String subTitle) {
+  return ListTile(
+    tileColor: Colors.grey.shade200,
+    leading: CircleAvatar(
+      backgroundColor: cColor,
+      child: Container(
+        decoration: BoxDecoration(
+            border: Border.all(color: Colors.green, width: 2),
+            borderRadius: BorderRadius.all(Radius.circular(500)),
+            image: DecorationImage(fit: BoxFit.cover, image: AssetImage(url))),
+      ),
+      // child: Text(
+      //   "$avatar",
+      //   style: TextStyle(fontSize: 20, color: Colors.white),
+      // ),
+    ),
+    title: Text("$title"),
+    subtitle: Text("$subTitle"),
   );
 }
