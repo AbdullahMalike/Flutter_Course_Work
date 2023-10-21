@@ -26,18 +26,22 @@ class TabBarExample extends StatelessWidget {
       length: 3,
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('TabBar Sample'),
+          backgroundColor: Color.fromARGB(255, 15, 107, 49),
+          title: const Text(
+            'WhatsApp',
+            style: TextStyle(color: Colors.white),
+          ),
           bottom: const TabBar(
             tabs: <Widget>[
               Tab(
                 // icon: Icon(Icons.chalet_outlined),
-                child: Text("Chats"),
+                child: Text('Chats', style: TextStyle(color: Colors.white)),
               ),
               Tab(
-                child: Text("Status"),
+                child: Text("Status", style: TextStyle(color: Colors.white)),
               ),
               Tab(
-                icon: Icon(Icons.brightness_5_sharp),
+                child: Text("Calls", style: TextStyle(color: Colors.white)),
               ),
             ],
           ),
@@ -84,22 +88,66 @@ class TabBarExample extends StatelessWidget {
                 ),
               ),
             ),
-            Column(
-              children: [
-                Container(
-                  padding: EdgeInsets.only(left: 16.0),
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    "Recent",
-                    style: TextStyle(fontSize: 18),
+            SingleChildScrollView(
+              child: Column(
+                children: [
+                  Container(
+                    padding: EdgeInsets.only(left: 16.0),
+                    alignment: Alignment.centerLeft,
+                    child: Text("Status",
+                        style: TextStyle(fontSize: 20, color: Colors.black)),
                   ),
-                ),
-                getstatusui(
-                    "assets/boy.avif", Colors.grey, "", "Rafay", "1 min ago")
-              ],
+                  getstatusui("assets/boy.avif", Colors.grey, "My Status",
+                      "10 min ago"),
+                  Container(
+                    padding: EdgeInsets.only(left: 16.0),
+                    alignment: Alignment.centerLeft,
+                    child: Text("Recent updates",
+                        style: TextStyle(fontSize: 15, color: Colors.black54)),
+                  ),
+                  getstatusui(
+                      "assets/boy.avif", Colors.grey, "Rafay", "1 min ago"),
+                  getstatusui(
+                      "assets/boy.avif", Colors.grey, "Ahtasham", "6:00 pm"),
+                  getstatusui(
+                      "assets/boy.avif", Colors.grey, "Arsalan", "4:00 am"),
+                  getstatusui(
+                      "assets/boy.avif", Colors.grey, "Araib", "5:30 pm"),
+                  getstatusui(
+                      "assets/boy.avif", Colors.grey, "Anees", "1:00 pm"),
+                  getstatusui(
+                      "assets/boy.avif", Colors.grey, "Anas", "6:00 pm"),
+                  getstatusui(
+                      "assets/boy.avif", Colors.grey, "Moiz", "10:00 pm"),
+                  getstatusui(
+                      "assets/boy.avif", Colors.grey, "Saadullah", "Yesterday"),
+                  getstatusui("assets/boy.avif", Colors.grey, "Abdul Rehman",
+                      "4 min ago"),
+                ],
+              ),
             ),
             Center(
-              child: Text("It's sunny here"),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    getcallui("Saad", "28 minutes ago", "assets/boy.avif"),
+                    getcallui("Araib", "1 hour ago", "assets/boy.avif"),
+                    getcallui(
+                        "Ahtasham", "Yesterday, 12:35 pm", "assets/boy.avif"),
+                    getcallui(
+                        "Arsalan", "Yesterday, 12:35 pm", "assets/boy.avif"),
+                    getcallui(
+                        "Ahtasham", "Yesterday, 12:35 pm", "assets/boy.avif"),
+                    getcallui("Moiz", "Yesterday, 12:35 pm", "assets/boy.avif"),
+                    getcallui(
+                        "Araib", "Yesterday, 12:35 pm", "assets/boy.avif"),
+                    getcallui("Saad", "Yesterday, 12:35 pm", "assets/boy.avif"),
+                    getcallui("Papa", "Yesterday, 12:35 pm", "assets/boy.avif"),
+                    getcallui("Papa", "28 minutes ago", "assets/boy.avif"),
+                    getcallui("Rafay", "28 minutes ago", "assets/boy.avif"),
+                  ],
+                ),
+              ),
             ),
           ],
         ),
@@ -111,7 +159,7 @@ class TabBarExample extends StatelessWidget {
 getchatui(String url, Color cColor, String avatar, String title,
     String subTitle, String trailing) {
   return ListTile(
-    tileColor: Colors.grey.shade200,
+    tileColor: Colors.white,
     leading: CircleAvatar(
       backgroundColor: cColor,
       child: Container(
@@ -131,15 +179,14 @@ getchatui(String url, Color cColor, String avatar, String title,
   );
 }
 
-getstatusui(
-    String url, Color cColor, String avatar, String title, String subTitle) {
+getstatusui(String url, Color cColor, String title, String subTitle) {
   return ListTile(
-    tileColor: Colors.grey.shade200,
+    tileColor: Colors.white,
     leading: CircleAvatar(
       backgroundColor: cColor,
       child: Container(
         decoration: BoxDecoration(
-            border: Border.all(color: Colors.green, width: 2),
+            border: Border.all(color: Colors.green, width: 3),
             borderRadius: BorderRadius.all(Radius.circular(500)),
             image: DecorationImage(fit: BoxFit.cover, image: AssetImage(url))),
       ),
@@ -150,5 +197,25 @@ getstatusui(
     ),
     title: Text("$title"),
     subtitle: Text("$subTitle"),
+  );
+}
+
+getcallui(String title, String subtitle, String url) {
+  return ListTile(
+    tileColor: Colors.white,
+    leading: CircleAvatar(
+      child: Container(
+        decoration: BoxDecoration(
+            border: Border.all(color: Colors.white),
+            borderRadius: BorderRadius.all(Radius.circular(500)),
+            image: DecorationImage(image: AssetImage(url), fit: BoxFit.cover)),
+      ),
+    ),
+    title: Text("$title"),
+    subtitle: Text("$subtitle"),
+    trailing: Icon(
+      Icons.call,
+      color: Colors.green,
+    ),
   );
 }
