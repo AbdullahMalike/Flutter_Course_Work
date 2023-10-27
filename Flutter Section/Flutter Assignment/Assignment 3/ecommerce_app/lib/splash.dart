@@ -11,10 +11,8 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    // Add any initialization tasks here (e.g., loading data, checking user authentication)
-    // You can use Future.delayed to simulate a delay for the Splash screen
+
     Future.delayed(Duration(seconds: 3), () {
-      // Navigate to the main screen or the first screen of your app
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (context) => WelcomePage()),
       );
@@ -28,13 +26,11 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            // Loading spinner using flutter_spinkit
             SpinKitFadingCircle(
-              color: Colors.blue, // Change the color of the spinner
-              size: 50.0, // Adjust the size of the spinner
+              color: Colors.blue,
+              size: 50.0,
             ),
             SizedBox(height: 20),
-            // You can use an image or logo for your app here
             Image.asset("assets/logo.png", width: 150, height: 150),
             SizedBox(height: 20),
             Text(
