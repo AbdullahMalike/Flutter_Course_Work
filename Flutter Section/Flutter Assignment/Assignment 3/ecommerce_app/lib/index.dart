@@ -1,10 +1,17 @@
+import 'package:ecommerce_app/shoesdetail.dart';
 import 'package:flutter/material.dart';
+
+import 'constrants/constant.dart';
+import 'constrants/productdetail.dart';
 
 class IndexView extends StatelessWidget {
   const IndexView({super.key});
 
   @override
   Widget build(BuildContext context) {
+    Constant constant = Constant();
+    var productlist = constant.MycustomList;
+    // ProductsView
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
@@ -57,10 +64,10 @@ class IndexView extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: [
-                        getarrivalcard(),
-                        getarrivalcard(),
-                        getarrivalcard(),
-                        getarrivalcard()
+                        getarrivalcard(context, productlist[0]),
+                        getarrivalcard(context, productlist[1]),
+                        getarrivalcard(context, productlist[2]),
+                        getarrivalcard(context, productlist[3])
                       ],
                     ),
                   ),
@@ -84,9 +91,9 @@ class IndexView extends StatelessWidget {
                       ),
                     ],
                   ),
-                  getpopularui(),
-                  getpopularui(),
-                  getpopularui()
+                  getpopularui(context, productlist[4]),
+                  getpopularui(context, productlist[5]),
+                  getpopularui(context, productlist[6])
                 ],
               ),
             ),
@@ -169,145 +176,169 @@ getcardui() {
   );
 }
 
-getarrivalcard() {
+getarrivalcard(BuildContext context, productdetail) {
   return Container(
     padding: EdgeInsets.all(10),
-    child: Card(
-      color: Colors.white,
-      shadowColor: Colors.grey.shade200,
-      elevation: 5.0,
-      child: Container(
-        width: 180,
-        height: 250,
-        child: Column(
-          children: [
-            Stack(
-              children: [
-                Image.asset(
-                  "assets/shoes1.jpeg",
-                  width: double.infinity,
-                  height: 180,
-                  fit: BoxFit.cover,
-                ),
-                Positioned(
-                    right: 10,
-                    top: 5,
-                    child: Icon(Icons.favorite_border_outlined))
-              ],
-            ),
-            Text(
-              "The Marc Jacobs",
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            Text(
-              "Traveler Tote",
-              style: TextStyle(color: Colors.black54),
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            Text(
-              "Pkr: 3000",
-              style: TextStyle(fontWeight: FontWeight.w900),
-            )
-          ],
+    child: InkWell(
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (BuildContext context) => ShoesView(productdetail)));
+      },
+      child: Card(
+        color: Colors.white,
+        shadowColor: Colors.grey.shade200,
+        elevation: 5.0,
+        child: Container(
+          width: 180,
+          height: 250,
+          child: Column(
+            children: [
+              Stack(
+                children: [
+                  Image.asset(
+                    "${productdetail.img}",
+                    width: double.infinity,
+                    height: 180,
+                    fit: BoxFit.cover,
+                  ),
+                  Positioned(
+                      right: 10,
+                      top: 5,
+                      child: Icon(Icons.favorite_border_outlined))
+                ],
+              ),
+              Text(
+                "${productdetail.name}",
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Text(
+                "${productdetail.desc}",
+                style: TextStyle(color: Colors.black54),
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Text(
+                "Pkr ${productdetail.price}",
+                style: TextStyle(fontWeight: FontWeight.w900),
+              )
+            ],
+          ),
         ),
       ),
     ),
   );
 }
 
-getpopularui() {
+getpopularui(BuildContext context, productdetail) {
   return Padding(
     padding: EdgeInsets.all(8.0),
     child: Expanded(
       child: Column(
         children: [
-          Card(
-            elevation: 7,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Container(
-              width: double.infinity,
-              height: 100,
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.white),
+          InkWell(
+            onTap: () {
+              print(productdetail.name);
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (BuildContext context) =>
+                          ShoesView(productdetail)));
+            },
+            child: Card(
+              elevation: 7,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
               ),
-              child: Stack(
-                children: [
-                  Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Image.asset(
-                          "assets/shoes1.jpeg",
-                          height: 70,
-                          width: 100,
-                        ),
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                    ],
-                  ),
-                  Positioned(
-                    top: 10,
-                    left: 120,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+              child: Container(
+                width: double.infinity,
+                height: 100,
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.white),
+                ),
+                child: Stack(
+                  children: [
+                    Row(
                       children: [
-                        Text(
-                          "Gia Borghini",
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Image.asset(
+                            "${productdetail.img}",
+                            height: 90,
+                            width: 100,
                           ),
                         ),
-                        Text(
-                          "RHW Raise 1 Shoes",
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.black54,
-                          ),
+                        SizedBox(
+                          width: 10,
                         ),
-                        Row(
-                          children: [
-                            Icon(
-                              Icons.star,
-                              color: Colors.yellow.shade600,
+                      ],
+                    ),
+                    Positioned(
+                      top: 10,
+                      left: 120,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "${productdetail.name}",
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
                             ),
-                            Text(
-                              "(4.6)",
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w700,
-                              ),
-                            )
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                  Positioned(
-                    top: 35,
-                    right: 10,
-                    child: Column(
-                      children: [
-                        Text(
-                          "Pkr 2000",
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600,
                           ),
-                        ),
-                      ],
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Text(
+                            "${productdetail.desc}",
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Colors.black54,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Row(
+                            children: [
+                              Icon(
+                                Icons.star,
+                                color: Colors.yellow.shade600,
+                              ),
+                              Text(
+                                "(${productdetail.rating})",
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                    Positioned(
+                      top: 35,
+                      right: 10,
+                      child: Column(
+                        children: [
+                          Text(
+                            "Pkr ${productdetail.price}",
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

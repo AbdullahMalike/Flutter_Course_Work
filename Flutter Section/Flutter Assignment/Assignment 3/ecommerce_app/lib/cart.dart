@@ -1,3 +1,5 @@
+import 'package:ecommerce_app/constrants/constant.dart';
+import 'package:ecommerce_app/constrants/productdetail.dart';
 import 'package:flutter/material.dart';
 
 class CartView extends StatelessWidget {
@@ -8,65 +10,70 @@ class CartView extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: Container(
-          child: Column(
-            children: [
-              SizedBox(
-                height: 30,
-              ),
-              Container(
-                child: Align(
-                  alignment: Alignment.bottomLeft,
-                  child: IconButton(
-                    onPressed: () {},
-                    icon: Icon(Icons.arrow_circle_left_rounded),
-                    style: ButtonStyle(),
-                  ),
-                ),
-              ),
-              Row(
+        body: ListView(
+          children: <Widget>[
+            // Header Section
+            Container(
+              padding: EdgeInsets.all(16),
+              child: Column(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 20),
-                    child: Text(
-                      "My Order",
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+                  Align(
+                    alignment: Alignment.bottomLeft,
+                    child: IconButton(
+                      onPressed: () {},
+                      icon: Icon(Icons.arrow_circle_left_rounded),
                     ),
                   ),
-                  Spacer(),
-                  Container(
-                    padding: EdgeInsets.only(right: 10),
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      child: Text("Ongoing"),
-                      style: ElevatedButton.styleFrom(
+                  Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 20),
+                        child: Text(
+                          "My Order",
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.w700),
+                        ),
+                      ),
+                      Spacer(),
+                      ElevatedButton(
+                        onPressed: () {},
+                        child: Text("Ongoing"),
+                        style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.white,
-                          foregroundColor: Colors.black54),
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.only(right: 10),
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      child: Text("Complated"),
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.black),
-                    ),
+                          foregroundColor: Colors.black54,
+                        ),
+                      ),
+                      SizedBox(width: 10),
+                      ElevatedButton(
+                        onPressed: () {},
+                        child: Text("Completed"),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.black,
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
-              getpopularui(Colors.lightBlue),
-              getpopularui(Colors.black)
-            ],
-          ),
+            ),
+
+            // Items List
+            ListView.builder(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemCount: Constant.cartList.length,
+              itemBuilder: (context, index) {
+                return getpopularui(index);
+              },
+            ),
+          ],
         ),
       ),
     );
   }
 }
 
-getpopularui(Color colorValue) {
+getpopularui(index) {
   return Padding(
     padding: EdgeInsets.all(8.0),
     child: Expanded(
@@ -90,7 +97,7 @@ getpopularui(Color colorValue) {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Image.asset(
-                          "assets/shoes1.jpeg",
+                          "${Constant.cartList[index].img}",
                           height: 70,
                           width: 100,
                         ),
@@ -107,41 +114,43 @@ getpopularui(Color colorValue) {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Gia Borghini",
+                          "${Constant.cartList[index].name}",
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         Text(
-                          "RHW Raise 1 Shoes",
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.black54,
-                          ),
-                        ),
-                        Text(
-                          "Quantity: 1",
+                          "${Constant.cartList[index].desc}",
                           style: TextStyle(
                             fontSize: 12,
                             color: Colors.black54,
                           ),
                         ),
                         Text(
-                          "Size: 42",
+                          "Quantity: ${Constant.cartList[index].selectedQuantity}",
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.black54,
+                          ),
+                        ),
+                        Text(
+                          "Size: ${Constant.cartList[index].selectedSize}",
                           style: TextStyle(fontSize: 12, color: Colors.black54),
                         ),
                         Row(
                           children: [
-                            Text("Color: ",
+                            Text(
+                                "Color: ${Constant.cartList[index].selectedcolor}",
                                 style: TextStyle(
                                     fontSize: 12, color: Colors.black54)),
                             Container(
                               height: 10,
                               width: 10,
                               decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(30),
-                                  color: colorValue),
+                                borderRadius: BorderRadius.circular(30),
+                                // color: colorValue
+                              ),
                             )
                           ],
                         )
@@ -154,7 +163,7 @@ getpopularui(Color colorValue) {
                     child: Column(
                       children: [
                         Text(
-                          "Pkr 2000",
+                          "Pkr: ${Constant.cartList[index].price * (Constant.cartList[index].selectedQuantity ?? 0)}",
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w600,

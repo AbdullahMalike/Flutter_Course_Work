@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/constrants/constant.dart';
 import 'package:flutter/material.dart';
 
 class ProfileView extends StatelessWidget {
@@ -27,7 +28,7 @@ class ProfileView extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Image.asset(
-                                "assets/myimg.jpg",
+                                "assets/person.jpg",
                                 height: 90,
                               ),
                             ),
@@ -40,12 +41,12 @@ class ProfileView extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "Abdullah",
+                                "${Constant.name}",
                                 style: TextStyle(
                                     fontSize: 22, fontWeight: FontWeight.w700),
                               ),
                               Text(
-                                "abdullahmalikae2002@gmail.com",
+                                "${Constant.email}",
                                 style: TextStyle(color: Colors.grey),
                               )
                             ],

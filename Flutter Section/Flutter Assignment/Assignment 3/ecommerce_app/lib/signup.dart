@@ -1,8 +1,43 @@
+import 'package:ecommerce_app/constrants/constant.dart';
+import 'package:ecommerce_app/login.dart';
 import 'package:ecommerce_app/successfull.dart';
 import 'package:flutter/material.dart';
 
 class SignupView extends StatelessWidget {
-  const SignupView({super.key});
+  SignupView({super.key});
+
+  final TextEditingController usernameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirm_passController = TextEditingController();
+
+  void signup(BuildContext context) {
+    String enteredusername = usernameController.text;
+    String enteredemail = emailController.text;
+    String entered_password = passwordController.text;
+    String entered_confirmpass = confirm_passController.text;
+
+    Constant.name = enteredusername;
+    Constant.email = enteredemail;
+    Constant.password = entered_password;
+    Constant.confirm_password = entered_confirmpass;
+    if (enteredemail.contains("@") &&
+        enteredemail.contains(".") &&
+        enteredusername != "" &&
+        enteredemail != "" &&
+        entered_password != "" &&
+        entered_confirmpass != "") {
+      print(enteredusername);
+      print(enteredemail);
+      print(entered_password);
+      print(entered_confirmpass);
+
+      Navigator.push(context,
+          MaterialPageRoute(builder: (BuildContext context) => LoginView()));
+    } else {
+      print("Write correct Syntex of email @ and . ");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -62,6 +97,7 @@ class SignupView extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.all(10),
                 child: TextField(
+                  controller: usernameController,
                   decoration: const InputDecoration(
                     prefixIcon: Icon(Icons.person),
                     border: UnderlineInputBorder(),
@@ -72,6 +108,7 @@ class SignupView extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.all(10),
                 child: TextField(
+                  controller: emailController,
                   decoration: const InputDecoration(
                     prefixIcon: Icon(Icons.email),
                     border: UnderlineInputBorder(),
@@ -82,6 +119,7 @@ class SignupView extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.all(10),
                 child: TextField(
+                  controller: passwordController,
                   decoration: const InputDecoration(
                       prefixIcon: Icon(Icons.password),
                       border: UnderlineInputBorder(),
@@ -92,6 +130,7 @@ class SignupView extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.all(10),
                 child: TextField(
+                  controller: confirm_passController,
                   decoration: const InputDecoration(
                       prefixIcon: Icon(Icons.password),
                       border: UnderlineInputBorder(),
@@ -126,13 +165,9 @@ class SignupView extends StatelessWidget {
                     height: 40,
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (BuildContext context) =>
-                                    SuccessfullView()));
+                        signup(context);
                       },
-                      child: Text("Login"),
+                      child: Text("Signup"),
                       style: ElevatedButton.styleFrom(
                           shape: StadiumBorder(),
                           backgroundColor: Colors.black,

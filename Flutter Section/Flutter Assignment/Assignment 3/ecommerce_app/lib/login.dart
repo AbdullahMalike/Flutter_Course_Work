@@ -1,9 +1,35 @@
+import 'package:ecommerce_app/constrants/constant.dart';
 import 'package:ecommerce_app/successfull.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class LoginView extends StatelessWidget {
-  const LoginView({super.key});
+  LoginView({super.key});
+
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
+  void login(BuildContext context) {
+    String enteredemail = emailController.text;
+    String password = passwordController.text;
+
+    if (enteredemail == Constant.email &&
+        password == Constant.password &&
+        enteredemail.contains("@") &&
+        enteredemail.contains(".") &&
+        enteredemail != "" &&
+        password != "") {
+      print(enteredemail);
+      print(password);
+
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (BuildContext context) => SuccessfullView()));
+    } else {
+      print("Wrong email or password");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,6 +90,7 @@ class LoginView extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.all(10),
                   child: TextField(
+                    controller: emailController,
                     decoration: const InputDecoration(
                       prefixIcon: Icon(Icons.email),
                       border: UnderlineInputBorder(),
@@ -74,6 +101,7 @@ class LoginView extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.all(10),
                   child: TextField(
+                    controller: passwordController,
                     decoration: const InputDecoration(
                       prefixIcon: Icon(Icons.password),
                       border: UnderlineInputBorder(),
@@ -88,11 +116,7 @@ class LoginView extends StatelessWidget {
                       height: 50,
                       child: ElevatedButton(
                         onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      SuccessfullView()));
+                          login(context);
                         },
                         child: Text("Login"),
                         style: ElevatedButton.styleFrom(
