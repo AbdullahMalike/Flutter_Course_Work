@@ -70,35 +70,11 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.3"
-  flutter_spinkit:
-    dependency: "direct main"
-    description:
-      name: flutter_spinkit
-      sha256: b39c753e909d4796906c5696a14daf33639a76e017136c8d82bf3e620ce5bb8e
-      url: "https://pub.dev"
-    source: hosted
-    version: "5.2.0"
   flutter_test:
     dependency: "direct dev"
     description: flutter
     source: sdk
     version: "0.0.0"
-  font_awesome_flutter:
-    dependency: "direct main"
-    description:
-      name: font_awesome_flutter
-      sha256: "52671aea66da73b58d42ec6d0912b727a42248dd9a7c76d6c20f275783c48c08"
-      url: "https://pub.dev"
-    source: hosted
-    version: "10.6.0"
-  intl:
-    dependency: "direct main"
-    description:
-      name: intl
-      sha256: "3bc132a9dbce73a7e4a21a17d06e1878839ffbf975568bc875c60537824b0c4d"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.18.1"
   js:
     dependency: transitive
     description:
@@ -210,4 +186,3 @@ packages:
     version: "2.1.4"
 sdks:
   dart: ">=3.0.6 <4.0.0"
-  flutter: ">=2.0.0"

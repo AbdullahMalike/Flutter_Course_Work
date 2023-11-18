@@ -11,7 +11,8 @@ class TodoApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: WelcomeView(),
+      debugShowCheckedModeBanner: false,
+      home: SplashScreen(),
     );
   }
 }
