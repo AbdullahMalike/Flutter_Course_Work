@@ -1,6 +1,9 @@
 // import 'package:counterapp/counter.dart';
-import 'package:counterapp/home.dart';
+
+import 'package:counterapp/Class6/Screens/index.dart';
 import 'package:flutter/material.dart';
+
+// import 'clas5/home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomeView(),
+      home: SplashScreen(),
     );
   }
 }
