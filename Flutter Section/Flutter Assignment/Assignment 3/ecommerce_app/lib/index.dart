@@ -2,6 +2,7 @@ import 'package:ecommerce_app/shoesdetail.dart';
 import 'package:flutter/material.dart';
 
 import 'constrants/constant.dart';
+// ignore: unused_import
 import 'constrants/productdetail.dart';
 
 class IndexView extends StatelessWidget {
@@ -192,7 +193,7 @@ getarrivalcard(BuildContext context, productdetail) {
         elevation: 5.0,
         child: Container(
           width: 180,
-          height: 250,
+          height: 270,
           child: Column(
             children: [
               Stack(

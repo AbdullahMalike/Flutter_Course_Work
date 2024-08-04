@@ -91,6 +91,7 @@ class WelcomePage extends StatelessWidget {
                           style: ElevatedButton.styleFrom(
                             shape: StadiumBorder(),
                             backgroundColor: Colors.transparent,
+                            foregroundColor: Colors.white,
                             side: BorderSide(color: Colors.white, width: 2),
                           ),
                         ),

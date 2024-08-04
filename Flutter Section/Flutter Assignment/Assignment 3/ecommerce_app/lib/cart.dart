@@ -1,4 +1,5 @@
 import 'package:ecommerce_app/constrants/constant.dart';
+// ignore: unused_import
 import 'package:ecommerce_app/constrants/productdetail.dart';
 import 'package:flutter/material.dart';
 
@@ -108,7 +109,7 @@ getpopularui(index) {
                     ],
                   ),
                   Positioned(
-                    top: 10,
+                   // top: 5,
                     left: 120,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -145,16 +146,19 @@ getpopularui(index) {
                                 style: TextStyle(
                                     fontSize: 12, color: Colors.black54)),
                             Container(
-                              height: 10,
+                             // height: 20,
                               width: 10,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(30),
                                 // color: colorValue
                               ),
-                            )
+                            ),
+                           // SizedBox(height: 10),
                           ],
-                        )
+                        ),
+                        // Additional space below the color
                       ],
+                      
                     ),
                   ),
                   Positioned(
@@ -175,6 +179,7 @@ getpopularui(index) {
                 ],
               ),
             ),
+           
           ),
         ],
       ),

@@ -185,7 +185,7 @@ getarrivalcard(ProductsDetailsView productdetail) {
         elevation: 5.0,
         child: Container(
           width: 180,
-          height: 250,
+          height: 280,
           child: Column(
             children: [
               Stack(
